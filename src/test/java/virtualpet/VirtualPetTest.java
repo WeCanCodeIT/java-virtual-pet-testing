@@ -34,15 +34,10 @@ public class VirtualPetTest {
 	}
 
 	/**
-	 * <p>
 	 * Adding this test forces me to create an instance variable to hold hunger as
-	 * well as implementing <code>getHunger()</code>, <code>feed()</code>, and
-	 * <code>tick()</code>.
-	 * </p>
+	 * well as implementing getHunger(), feed(), and tick().
 	 * 
-	 * <p>
-	 * I decided that my <code>tick()</code> method would increase hunger by two.
-	 * </p>
+	 * I decided that my tick() method would increase hunger by two.
 	 */
 	@Test
 	public void shouldBeMoreHungryAfterTick() {
