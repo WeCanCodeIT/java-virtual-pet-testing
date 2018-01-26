@@ -23,7 +23,7 @@ public class VirtualPetTest {
 	public void shouldBeLessHungryAfterFeeding() {
 		// arrange
 		int initialHunger = 20;
-		VirtualPet underTest = new VirtualPet(initialHunger);
+		VirtualPet underTest = new VirtualPet(initialHunger, 0); // added initial thirst
 
 		// act
 		underTest.feed();
@@ -41,11 +41,29 @@ public class VirtualPetTest {
 	 */
 	@Test
 	public void shouldBeMoreHungryAfterTick() {
-		VirtualPet underTest = new VirtualPet(15);
+		VirtualPet underTest = new VirtualPet(15, 0); // added initial thirst
 
 		underTest.tick();
 
 		int currentHunger = underTest.getHunger();
 		Assert.assertEquals(17, currentHunger);
+	}
+
+	/**
+	 * Now I want to add an initial thirst argument to my constructor. That means
+	 * I'll need to add this to the constructor calls in my other tests, too. I'll
+	 * just use zeroes in my other tests since its value doesn't matter in those tests.
+	 */
+	@Test
+	public void shouldBeLessThirstyAfterWatering() {
+		int initialThirst = 30;
+		VirtualPet underTest = new VirtualPet(0, initialThirst); // added initial thirst
+
+		// act
+		underTest.water();
+
+		// assert
+		int currentThirst = underTest.getThirst();
+		Assert.assertEquals("Thirst should have been reduced by 5", 25, currentThirst);
 	}
 }
