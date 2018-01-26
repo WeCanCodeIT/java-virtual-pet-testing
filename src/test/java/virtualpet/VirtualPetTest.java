@@ -21,8 +21,8 @@ public class VirtualPetTest {
 	 * 
 	 * <p>
 	 * I have decided that feeding is going to reduce hunger by 5, so to make this
-	 * test pass, I don't need to do anything more than have <code>getHunger()</code>
-	 * return 15.
+	 * test pass, I don't need to do anything more than have
+	 * <code>getHunger()</code> return 15.
 	 * </p>
 	 */
 	@Test
@@ -30,12 +30,33 @@ public class VirtualPetTest {
 		// arrange
 		int initialHunger = 20;
 		VirtualPet underTest = new VirtualPet(initialHunger);
-		
+
 		// act
 		underTest.feed();
-		
+
 		// assert
 		int currentHunger = underTest.getHunger();
 		Assert.assertEquals(15, currentHunger);
+	}
+
+	/**
+	 * <p>
+	 * Adding this test forces me to create an instance variable to hold hunger as
+	 * well as implementing <code>getHunger()</code>, <code>feed()</code>, and
+	 * <code>tick()</code>.
+	 * </p>
+	 * 
+	 * <p>
+	 * I decided that my <code>tick()</code> method would increase hunger by two.
+	 * </p>
+	 */
+	@Test
+	public void shouldBeMoreHungryAfterTick() {
+		VirtualPet underTest = new VirtualPet(15);
+
+		underTest.tick();
+
+		int currentHunger = underTest.getHunger();
+		Assert.assertEquals(17, currentHunger);
 	}
 }
