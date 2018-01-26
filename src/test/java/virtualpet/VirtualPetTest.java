@@ -79,7 +79,7 @@ public class VirtualPetTest {
 
 		underTest.tick();
 
-		int currentThirst = underTest.getHunger();
+		int currentThirst = underTest.getThirst();
 		// the assertEquals methods are overloaded so that we can include a failure
 		// message
 		// this is functionally equivalent to Assert.assertEquals(32, currentThirst);
