@@ -23,7 +23,7 @@ public class VirtualPetTest {
 	public void shouldBeLessHungryAfterFeeding() {
 		// arrange
 		int initialHunger = 20;
-		VirtualPet underTest = new VirtualPet(initialHunger, 0); // added initial thirst
+		VirtualPet underTest = new VirtualPet(initialHunger, 0);
 
 		// act
 		underTest.feed();
@@ -41,7 +41,7 @@ public class VirtualPetTest {
 	 */
 	@Test
 	public void shouldBeMoreHungryAfterTick() {
-		VirtualPet underTest = new VirtualPet(15, 0); // added initial thirst
+		VirtualPet underTest = new VirtualPet(15, 0);
 
 		underTest.tick();
 
@@ -52,12 +52,14 @@ public class VirtualPetTest {
 	/**
 	 * Now I want to add an initial thirst argument to my constructor. That means
 	 * I'll need to add this to the constructor calls in my other tests, too. I'll
-	 * just use zeroes in my other tests since its value doesn't matter in those tests.
+	 * just use zeroes in my other tests since its value doesn't matter in those
+	 * tests. Again, to make this test pass, I just need to return a constant value
+	 * of 25 from getThirst().
 	 */
 	@Test
 	public void shouldBeLessThirstyAfterWatering() {
 		int initialThirst = 30;
-		VirtualPet underTest = new VirtualPet(0, initialThirst); // added initial thirst
+		VirtualPet underTest = new VirtualPet(0, initialThirst);
 
 		// act
 		underTest.water();
@@ -65,5 +67,22 @@ public class VirtualPetTest {
 		// assert
 		int currentThirst = underTest.getThirst();
 		Assert.assertEquals("Thirst should have been reduced by 5", 25, currentThirst);
+	}
+
+	/**
+	 * This will force me to implement support for keeping track of thirst. I'm
+	 * going to increase thirst by two each tick.
+	 */
+	@Test
+	public void shouldBeMoreThirstyAfterTick() {
+		VirtualPet underTest = new VirtualPet(0, 30);
+
+		underTest.tick();
+
+		int currentThirst = underTest.getHunger();
+		// the assertEquals methods are overloaded so that we can include a failure
+		// message
+		// this is functionally equivalent to Assert.assertEquals(32, currentThirst);
+		Assert.assertEquals("Thirst should have increased by 2", 32, currentThirst);
 	}
 }
